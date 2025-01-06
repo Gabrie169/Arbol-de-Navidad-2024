@@ -9,8 +9,19 @@
     </title>
 </head>
 <body>
+    <div id="nieve"></div>
     <h1>🎄FELIZ NAVIDAD 2024🎄</h1>
     <div id="arbol"></div>
+
+    <div class="izquierda">
+        <img src="img/noelsoga.png" alt="Santa Izquierda" class="noel-ima">
+        <div class="soga"></div>
+    </div>
+
+    <div class="derecha">
+        <img src="img/noelsoga.png" alt="Santa Derecha" class="noel-ima2">
+        <div class="soga"></div>
+    </div>
 
     <div class="player-container">
         <div class="custom-audio-controls">
@@ -83,6 +94,35 @@
                 const duration = audio.duration;
                 audio.currentTime = (progressBar.value / 100) * duration;
             });
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+         const nieve = document.getElementById("nieve");
+
+        function createSnowflake() {
+        const snowflake = document.createElement("div");
+        snowflake.classList.add("snowflake");
+
+        // Estilo aleatorio para cada copo
+        const size = Math.random() * 10 + 5; // Tamaño entre 5px y 15px
+        snowflake.style.width = `${size}px`;
+        snowflake.style.height = `${size}px`;
+        snowflake.style.left = `${Math.random() * 100}vw`; // Posición horizontal aleatoria
+        snowflake.style.animationDuration = `${Math.random() * 5 + 3}s`; // Duración aleatoria de la caída
+        snowflake.style.animationDelay = `${Math.random() * 5}s`; // Retraso aleatorio
+
+        // Agrega el copo al contenedor
+        nieve.appendChild(snowflake);
+
+        // Elimina el copo después de que termina la animación
+        setTimeout(() => {
+            snowflake.remove();
+        }, 8000);
+    }
+
+    // Genera copos de nieve continuamente
+    setInterval(createSnowflake, 200); // Un copo nuevo cada 200ms
+});
 
     </script>
         
