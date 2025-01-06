@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-
+    <script src="script.js"></script>
     <title>ARBOL DE NAVIDAD CON HTML CSS Y JAVA SCRIPT
     </title>
 </head>
@@ -23,12 +23,12 @@
         <div class="soga"></div>
     </div>
 
-    <div class="player-container">
-        <div class="custom-audio-controls">
-            <button id="play-button" class="control-button">▶</button>
-            <button id="pause-button" class="control-button">⏸</button>
-            <input id="progress-bar" class="progress-bar" type="range" min="0" max="100" value="0">
-            <span id="time-display" class="time-display">00:00</span>
+    <div class="reproductor">
+        <div class="controles-audio">
+            <button id="play" class="control-boton">▶</button>
+            <button id="pausa" class="control-boton">⏸</button>
+            <input id="barra-progreso" class="barra-progreso" type="range" min="0" max="100" value="0">
+            <span id="tiempo-display" class="tiempo-display">00:00</span>
         </div>
     </div>
     <audio id="audio" style="display: none;">
@@ -37,94 +37,6 @@
     
     <h2>🤶Realizado por Gabriel Caramantín🤶</h2>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function(){
-            const rows = [10,4];
-            let hojas = "";
-            rows.forEach(niveles =>{
-                for (let i = 0; i < niveles; i++) {
-                    hojas +='<span class="color">*</span>'.repeat(1+i*2);
-                    hojas += '<br>';
-                }
-            });
-            arbol.innerHTML = hojas;
-
-            //animación
-            let animacion = document.querySelectorAll(".color");
-            animacion.forEach((hoja, i)=>{
-                let time = i/20 + .5;
-                hoja.style.animation = `animacion ${time}s infinite`;
-            })
-        });
-
-            const audio = document.getElementById("audio");
-            const playButton = document.getElementById("play-button");
-            const pauseButton = document.getElementById("pause-button");
-            const progressBar = document.getElementById("progress-bar");
-            const timeDisplay = document.getElementById("time-display");
-
-            // Play audio
-            playButton.addEventListener("click", () => {
-                audio.play();
-                playButton.style.display = "none";
-                pauseButton.style.display = "inline-block";
-            });
-
-            // Pause audio
-            pauseButton.addEventListener("click", () => {
-                audio.pause();
-                pauseButton.style.display = "none";
-                playButton.style.display = "inline-block";
-            });
-
-            // Update progress bar
-            audio.addEventListener("timeupdate", () => {
-                const currentTime = audio.currentTime;
-                const duration = audio.duration;
-                progressBar.value = (currentTime / duration) * 100;
-
-                // Update time display
-                const minutes = Math.floor(currentTime / 60);
-                const seconds = Math.floor(currentTime % 60);
-                timeDisplay.textContent = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-            });
-
-            // Seek audio
-            progressBar.addEventListener("input", () => {
-                const duration = audio.duration;
-                audio.currentTime = (progressBar.value / 100) * duration;
-            });
-
-
-        document.addEventListener("DOMContentLoaded", function () {
-         const nieve = document.getElementById("nieve");
-
-        function createSnowflake() {
-        const snowflake = document.createElement("div");
-        snowflake.classList.add("snowflake");
-
-        // Estilo aleatorio para cada copo
-        const size = Math.random() * 10 + 5; // Tamaño entre 5px y 15px
-        snowflake.style.width = `${size}px`;
-        snowflake.style.height = `${size}px`;
-        snowflake.style.left = `${Math.random() * 100}vw`; // Posición horizontal aleatoria
-        snowflake.style.animationDuration = `${Math.random() * 5 + 3}s`; // Duración aleatoria de la caída
-        snowflake.style.animationDelay = `${Math.random() * 5}s`; // Retraso aleatorio
-
-        // Agrega el copo al contenedor
-        nieve.appendChild(snowflake);
-
-        // Elimina el copo después de que termina la animación
-        setTimeout(() => {
-            snowflake.remove();
-        }, 8000);
-    }
-
-    // Genera copos de nieve continuamente
-    setInterval(createSnowflake, 200); // Un copo nuevo cada 200ms
-});
-
-    </script>
-        
+   
 </body>
 </html>
