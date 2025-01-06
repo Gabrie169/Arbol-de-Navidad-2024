@@ -18,11 +18,10 @@ h1,h2{
     animation: 3s animacion infinite;
 }
 
-/* Contenedor principal reducido */
-.player-container {
+.reproductor {
     margin: 20px auto;
     padding: 15px;
-    width: 240px; /* Tamaño reducido */
+    width: 240px; 
     background: linear-gradient(145deg, #008000, #ff0000);
     border: 2px solid #ffcc00;
     border-radius: 15px;
@@ -30,42 +29,39 @@ h1,h2{
     text-align: center;
 }
 
-/* Controles personalizados más pequeños */
-.custom-audio-controls {
+.controles-audio {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px; /* Menor separación */
+    gap: 5px; 
     margin-top: 5px;
 }
 
-/* Botones de control más compactos */
-.control-button {
+.control-boton {
     background: #ffcc00;
     color: #002b5c;
     border: none;
     border-radius: 50%;
-    width: 30px; /* Tamaño reducido */
-    height: 30px; /* Tamaño reducido */
-    font-size: 14px; /* Texto más pequeño */
+    width: 30px; 
+    height: 30px; 
+    font-size: 14px; 
     cursor: pointer;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s, background 0.3s;
 }
 
-.control-button:hover {
+.control-boton:hover {
     background: #ffa500;
     color: white;
 }
 
-.control-button:active {
+.control-boton:active {
     transform: scale(0.95);
 }
 
-/* Barra de progreso más pequeña */
-.progress-bar {
+.barra-progeso {
     flex: 1;
-    height: 6px; /* Menor altura */
+    height: 6px; 
     background: #ffcc00;
     border-radius: 3px;
     appearance: none;
@@ -74,16 +70,16 @@ h1,h2{
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.progress-bar::-webkit-slider-thumb {
+.barra-progreso::-webkit-slider-thumb {
     appearance: none;
-    width: 8px; /* Tamaño reducido */
-    height: 8px; /* Tamaño reducido */
+    width: 8px; 
+    height: 8px; 
     background: #ff0000;
     border-radius: 50%;
     cursor: pointer;
 }
 
-.progress-bar::-moz-range-thumb {
+.barra-progreso::-moz-range-thumb {
     width: 8px;
     height: 8px;
     background: #ff0000;
@@ -91,23 +87,122 @@ h1,h2{
     cursor: pointer;
 }
 
-/* Tiempo más pequeño */
-.time-display {
-    font-size: 12px; /* Tamaño reducido */
+.tiempo-display {
+    font-size: 12px; 
     color: #ffcc00;
     font-weight: bold;
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 
-/* Adaptabilidad móvil */
 @media (max-width: 400px) {
-    .player-container {
+    .reproductor {
         width: 90%;
         padding: 15px;
     }
-    .custom-button {
+    .controles-audio {
         padding: 8px 15px;
         font-size: 0.9em;
+    }
+}
+
+/*FONDO ANIMADO*/
+#nieve {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* para no afectar interacción del usuario*/
+    z-index: 1; 
+    overflow: hidden; 
+}
+
+.coponieve {
+    position: absolute;
+    top: -10px; 
+    background-color: white; 
+    border-radius: 50%; 
+    opacity: 0.8; 
+    animation: fall linear infinite, oscilar ease-in-out infinite;
+}
+
+@keyframes fall {
+    0% {
+        top: -10px; 
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+@keyframes oscilar {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(15px); 
+    }
+}
+
+/* Contenedor de los Papás Noel */
+.izquierda, .derecha {
+    position: fixed; 
+    top: 50%; 
+    transform: translateY(-50%);
+    width: 100px; 
+    text-align: center;
+    animation: subirBajar 3s ease-in-out infinite; 
+}
+
+.izquierda {
+    left: 10px; 
+}
+
+.derecha {
+    right: 10px; 
+}
+
+.noel-ima {
+    width: 150%; 
+}
+
+.noel-ima2 {
+    width: 150%; 
+    transform: scaleX(-1);
+}
+
+/*
+.soga {
+    width: 5px;
+    height: 150px; 
+    background-color: #fff; 
+    margin: 0 auto;
+    position: absolute;
+    top: 0; 
+    left: 50%; 
+    transform: translateX(-50%);
+}
+*/
+
+@keyframes subirBajar {
+    0% {
+        transform: translateY(-30px); 
+    }
+    50% {
+        transform: translateY(30px); 
+    }
+    100% {
+        transform: translateY(-30px); 
+    }
+}
+@media (max-width: 400px) {
+    .izquierda {
+        width: 25%;
+        margin-left: -50px;
+        
+    }
+    .derecha {
+        width: 25%;
     }
 }
